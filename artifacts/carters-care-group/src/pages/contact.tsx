@@ -28,8 +28,8 @@ const skinData = {
     inputFocus: "#be123c",
   },
   "service-provider": {
-    title: "Contact Our\nPartnership Team",
-    subtitle: "Connect with us to explore referrals, partnerships, or collaborative care opportunities.",
+    title: "Get Started with\nthe Platform",
+    subtitle: "Request a demo, ask about pricing, or get help onboarding your organisation onto the Carters Care Platform.",
     accent: "#1d4ed8",
     accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",

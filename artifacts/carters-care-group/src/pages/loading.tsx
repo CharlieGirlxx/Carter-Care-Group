@@ -31,9 +31,9 @@ export default function LoadingPage() {
     },
     {
       id: "service-provider" as const,
-      title: "Service Provider",
-      subtitle: "Partners & Referrers",
-      description: "Collaborate with us to deliver exceptional care outcomes for your clients.",
+      title: "Carters Care Platform",
+      subtitle: "For Service Providers",
+      description: "Access our purpose-built platform for managing clients, care plans, scheduling, and compliance reporting in one place.",
       icon: Building2,
       color: "#1d4ed8",
       gradient: "from-blue-500 to-cyan-400",
