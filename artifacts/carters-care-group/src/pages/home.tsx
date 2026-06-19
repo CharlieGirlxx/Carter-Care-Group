@@ -2,12 +2,13 @@ import { useSkin } from "@/App";
 import Layout from "@/components/layout";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Heart, HandHeart, Building2, Star, Shield, Sparkles } from "lucide-react";
+import { ArrowRight, Heart, HandHeart, Star, Shield, Sparkles, Phone, CheckCircle2 } from "lucide-react";
+import PageTransition from "@/components/PageTransition";
 
 const skinData = {
   ndis: {
-    heroTitle: "Your NDIS Journey, Supported Every Step",
-    heroText: "We provide personalised disability support services that put you in control. From daily living assistance to community participation, we help you achieve your goals with dignity and independence.",
+    heroTitle: "Your NDIS Journey,\nSupported Every Step",
+    heroText: "Personalised disability support services that put you in control — from daily living to community participation.",
     heroImage: "/assets/hero-ndis.png",
     cta: "Explore NDIS Services",
     services: [
@@ -16,14 +17,17 @@ const skinData = {
       { title: "Life Skills Development", desc: "Learn practical skills from cooking to budgeting, empowering you for the future.", icon: Star },
     ],
     quote: "Our NDIS support workers are passionate about helping participants live their best lives. We listen, we care, we deliver.",
-    accent: "#0d8a5d",
-    accentBg: "#e8f7f2",
-    accentLight: "#f0fdf4",
+    checks: ["NDIS Registered Provider", "Personalised Support Plans", "Experienced Care Workers", "24/7 On-Call Support"],
+    accent: "#0b7a52",
+    accentBg: "#f0fdf4",
     gradient: "from-emerald-500 to-teal-500",
+    gradientCss: "linear-gradient(135deg, #0d8a5d, #14b87a)",
+    sectionBg: "#f0fdf4",
+    statColor: "#0d8a5d",
   },
   "aged-care": {
-    heroTitle: "Compassionate Aged Care, Where You Belong",
-    heroText: "We specialise in providing exceptional aged care services that respect your dignity, choices, and preferences. Whether at home or in our intimate residential settings, we make every day comfortable and meaningful.",
+    heroTitle: "Compassionate Aged Care,\nWhere You Belong",
+    heroText: "Exceptional aged care services that honour your dignity, choices, and independence — at home or in our intimate residential settings.",
     heroImage: "/assets/hero-aged-care.png",
     cta: "Explore Aged Care Services",
     services: [
@@ -32,14 +36,17 @@ const skinData = {
       { title: "Residential Care", desc: "Intimate residential homes with personalised care and a warm community atmosphere.", icon: Star },
     ],
     quote: "We treat our aged care clients like family, because everyone deserves to feel valued, respected, and at home.",
-    accent: "#c41e5a",
-    accentBg: "#fdeef3",
-    accentLight: "#fff1f2",
+    checks: ["Government Approved Provider", "Culturally Sensitive Care", "Qualified & Compassionate Staff", "Regular Family Updates"],
+    accent: "#9b1239",
+    accentBg: "#fff1f2",
     gradient: "from-rose-500 to-pink-500",
+    gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
+    sectionBg: "#fff1f2",
+    statColor: "#be123c",
   },
   "service-provider": {
-    heroTitle: "Partner with Carters Care Group",
-    heroText: "We collaborate with health professionals, support coordinators, and organisations to deliver exceptional care outcomes. Our streamlined referral process and dedicated partnership team make working together effortless.",
+    heroTitle: "Partner with\nCarters Care Group",
+    heroText: "We collaborate with health professionals and support coordinators to deliver exceptional care outcomes. Fast referrals, clear communication.",
     heroImage: "/assets/hero-partner.png",
     cta: "Partner With Us",
     services: [
@@ -48,11 +55,21 @@ const skinData = {
       { title: "Reporting & Compliance", desc: "Transparent reporting that meets NDIS and aged care regulatory requirements.", icon: Star },
     ],
     quote: "Our partners trust us because we deliver on our promises. We are responsive, professional, and genuinely care about outcomes.",
-    accent: "#2563b5",
-    accentBg: "#eef4fc",
-    accentLight: "#eff6ff",
+    checks: ["24hr Referral Acknowledgement", "NDIS & Aged Care Compliant", "Dedicated Partnership Liaison", "Detailed Progress Reporting"],
+    accent: "#1d4ed8",
+    accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",
+    gradientCss: "linear-gradient(135deg, #2563eb, #06b6d4)",
+    sectionBg: "#eff6ff",
+    statColor: "#2563eb",
   },
+};
+
+const inView = {
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 };
 
 export default function Home() {
@@ -61,205 +78,265 @@ export default function Home() {
   if (!data) return null;
 
   return (
-    <Layout>
-      {/* Hero Section with gradient overlay */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={data.heroImage} alt="Hero" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+    <PageTransition>
+      <Layout>
+        {/* ── Hero ── */}
+        <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+          <div className="absolute inset-0">
+            <img src={data.heroImage} alt="Hero" className="w-full h-full object-cover scale-105" style={{ transformOrigin: "center center" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)" }} />
+          </div>
+
+          {/* Floating orbs */}
+          <motion.div animate={{ y: [0, -20, 0], x: [0, 15, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-16 right-16 w-40 h-40 rounded-full blur-3xl opacity-30"
+            style={{ background: data.gradientCss }} />
+          <motion.div animate={{ y: [0, 20, 0] }} transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-24 left-16 w-32 h-32 rounded-full blur-3xl opacity-20"
+            style={{ background: data.gradientCss }} />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-2xl"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md border border-white/20 mb-8"
+                style={{ background: "rgba(255,255,255,0.12)" }}>
+                <Sparkles size={13} className="text-white/80" />
+                <span className="text-xs font-bold text-white/90 uppercase tracking-widest">Welcome to Carters Care Group</span>
+              </div>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.05] tracking-tight whitespace-pre-line">
+                {data.heroTitle}
+              </h1>
+              <p className="text-lg text-white/80 mb-10 leading-relaxed max-w-lg">
+                {data.heroText}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  style={{ background: data.gradientCss, boxShadow: `0 8px 32px ${data.accent}50` }}
+                >
+                  {data.cta}
+                  <ArrowRight size={17} />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-bold text-white transition-all duration-300 hover:bg-white/15"
+                  style={{ border: "2px solid rgba(255,255,255,0.35)", backdropFilter: "blur(8px)" }}
+                >
+                  Get In Touch
+                </Link>
+              </div>
+
+              {/* Check items */}
+              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-10">
+                {data.checks.map((c) => (
+                  <div key={c} className="flex items-center gap-2 text-sm text-white/70">
+                    <CheckCircle2 size={14} className="text-white/60 shrink-0" />
+                    {c}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Wave transition to trust bar */}
+        <div className="relative overflow-hidden" style={{ background: data.sectionBg }}>
+          <div className="absolute top-0 left-0 right-0" style={{ transform: "translateY(-99%)" }}>
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+              <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill={data.sectionBg} />
+            </svg>
+          </div>
         </div>
-        {/* Decorative floating blobs */}
-        <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-white/10 to-white/5 blur-2xl" />
-        <div className="absolute bottom-20 left-20 w-40 h-40 rounded-full bg-gradient-to-br from-white/10 to-transparent blur-2xl" />
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/20 mb-6">
-              <Sparkles size={14} className="text-white/80" />
-              <span className="text-xs font-semibold text-white/90 uppercase tracking-wider">Welcome to Carters Care Group</span>
+
+        {/* ── Trust bar ── */}
+        <section className="py-10 bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+              {[
+                { icon: Shield, label: "NDIS Registered" },
+                { icon: Heart, label: "Aged Care Approved" },
+                { icon: Sparkles, label: "5-Star Rated" },
+                { icon: Star, label: "Family Owned" },
+              ].map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-2.5 text-gray-500">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: data.sectionBg }}>
+                    <Icon size={15} style={{ color: data.accent }} />
+                  </div>
+                  <span className="text-sm font-semibold">{label}</span>
+                </div>
+              ))}
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              {data.heroTitle}
-            </h1>
-            <p className="text-lg text-white/85 mb-8 leading-relaxed max-w-xl">
-              {data.heroText}
-            </p>
-            <div className="flex flex-wrap gap-4">
+          </div>
+        </section>
+
+        {/* ── Services Preview ── */}
+        <section className="py-24 relative overflow-hidden" style={{ background: data.sectionBg }}>
+          {/* Ambient blobs */}
+          <div className="absolute top-0 left-0 w-72 h-72 rounded-full blur-3xl opacity-40 pointer-events-none"
+            style={{ background: `radial-gradient(circle, ${data.accent}30 0%, transparent 70%)`, transform: "translate(-30%, -30%)" }} />
+          <div className="absolute bottom-0 right-0 w-72 h-72 rounded-full blur-3xl opacity-30 pointer-events-none"
+            style={{ background: `radial-gradient(circle, ${data.accent}20 0%, transparent 70%)`, transform: "translate(30%, 30%)" }} />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-14">
+              <motion.div {...inView}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 mb-5 shadow-sm">
+                <span className="w-2 h-2 rounded-full" style={{ background: data.gradientCss }} />
+                <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">What We Offer</span>
+              </motion.div>
+              <motion.h2 {...inView} className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Our Services</motion.h2>
+              <motion.p {...inView} className="text-gray-500 max-w-lg mx-auto text-lg leading-relaxed">
+                Tailored support designed around your needs, goals, and preferences.
+              </motion.p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+              {data.services.map((s, i) => {
+                const Icon = s.icon;
+                return (
+                  <motion.div
+                    key={s.title}
+                    initial={{ opacity: 0, y: 36 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ y: -8, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+                    className="bg-white rounded-3xl p-8 border border-gray-100 group relative overflow-hidden cursor-default"
+                    style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
+                  >
+                    {/* Bottom gradient line that reveals on hover */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-1 rounded-b-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: data.gradientCss }}
+                    />
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      style={{ background: data.gradientCss }}
+                    >
+                      <Icon size={26} className="text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{s.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <motion.div {...inView} className="text-center mt-12">
               <Link
                 href="/services"
-                className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-white transition-all hover:scale-105 hover:shadow-lg bg-gradient-to-r ${data.gradient}`}
-              >
-                {data.cta}
-                <ArrowRight size={18} />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-white border-2 border-white/30 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/50"
-              >
-                Get In Touch
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Trust badges */}
-      <section className="py-8 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {[
-              { icon: Shield, label: "NDIS Registered" },
-              { icon: Heart, label: "Aged Care Approved" },
-              { icon: Sparkles, label: "5-Star Rated" },
-              { icon: Star, label: "Family Owned" },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-gray-500">
-                <Icon size={18} className="text-purple-500" />
-                <span className="text-sm font-medium">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Preview */}
-      <section className="py-24 relative overflow-hidden" style={{ background: data.accentBg }}>
-        {/* Decorative background pattern */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-gradient-to-br from-purple-200/50 to-pink-200/50 blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-64 h-64 rounded-full bg-gradient-to-br from-amber-200/50 to-orange-200/50 blur-3xl" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-14">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 mb-4"
-            >
-              <span className="w-2 h-2 rounded-full" style={{ background: data.accent }} />
-              <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">What We Offer</span>
-            </motion.div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-lg">
-              Tailored support designed around your needs, goals, and preferences.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {data.services.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={s.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 group"
-                >
-                  <div
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br ${data.gradient} shadow-md group-hover:scale-110 transition-transform`}
-                  >
-                    <Icon size={28} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-          <div className="text-center mt-12">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 font-bold transition-all hover:gap-4"
-              style={{ color: data.accent }}
-            >
-              View All Services <ArrowRight size={18} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Quote Section with image background */}
-      <section className="py-24 relative overflow-hidden">
-        <img src="/assets/gradient-bg.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
-        
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center mx-auto mb-8 shadow-lg">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 leading-relaxed">
-              {data.quote}
-            </h2>
-            <Link
-              href="/contact"
-              className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:scale-105 hover:shadow-xl bg-gradient-to-r ${data.gradient}`}
-            >
-              Get In Touch
-              <ArrowRight size={18} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Banner */}
-      <section className="py-16 relative overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-r ${data.gradient}`} />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')] opacity-30" />
-        
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to get started?</h2>
-            <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-              Contact our friendly team today for a free consultation or to learn more about our services.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold bg-white transition-all hover:scale-105 hover:shadow-xl"
+                className="inline-flex items-center gap-2 font-bold transition-all duration-200 hover:gap-3"
                 style={{ color: data.accent }}
               >
-                Contact Us
-                <ArrowRight size={18} />
+                View All Services <ArrowRight size={17} />
               </Link>
-              <a
-                href="tel:0410186009"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white border-2 border-white/40 backdrop-blur-sm transition-all hover:bg-white/10"
-              >
-                <PhoneIcon size={18} />
-                0410 186 009
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </Layout>
-  );
-}
+            </motion.div>
+          </div>
+        </section>
 
-function PhoneIcon({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
+        {/* Wave into quote section */}
+        <div className="overflow-hidden bg-white">
+          <svg viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+            <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,0 L0,0 Z" fill={data.sectionBg} />
+          </svg>
+        </div>
+
+        {/* ── Quote / Why Us ── */}
+        <section className="py-24 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none opacity-30">
+            <img src="/assets/gradient-bg.png" alt="" className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute inset-0 pointer-events-none" style={{
+            background: "linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.6) 100%)"
+          }} />
+
+          <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <motion.div {...inView}>
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl"
+                style={{ background: data.gradientCss }}
+              >
+                <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+              </div>
+              <p className="text-2xl md:text-4xl font-bold text-gray-900 leading-relaxed mb-10 tracking-tight">
+                "{data.quote}"
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white transition-all duration-300 hover:scale-105"
+                style={{ background: data.gradientCss, boxShadow: `0 8px 32px ${data.accent}40` }}
+              >
+                Get In Touch
+                <ArrowRight size={17} />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Wave into CTA */}
+        <div className="overflow-hidden" style={{ background: data.accent }}>
+          <svg viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+            <path d="M0,36 C360,72 1080,0 1440,36 L1440,0 L0,0 Z" fill="#fff" />
+          </svg>
+        </div>
+
+        {/* ── CTA Banner ── */}
+        <section className="py-16 relative overflow-hidden" style={{ background: data.gradientCss }}>
+          <motion.div
+            animate={{ x: [0, 60, 0], y: [0, -30, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20"
+            style={{ background: "white" }}
+          />
+          <motion.div
+            animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0 left-10 w-48 h-48 rounded-full blur-3xl opacity-15"
+            style={{ background: "white" }}
+          />
+
+          <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <motion.div {...inView}>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Ready to get started?</h2>
+              <p className="text-white/75 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+                Contact our friendly team today for a free consultation or to learn more about our services.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold bg-white transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  style={{ color: data.accent }}
+                >
+                  Contact Us
+                  <ArrowRight size={17} />
+                </Link>
+                <a
+                  href="tel:0410186009"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white transition-all duration-300 hover:bg-white/15"
+                  style={{ border: "2px solid rgba(255,255,255,0.35)" }}
+                >
+                  <Phone size={17} />
+                  0410 186 009
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Wave footer transition */}
+        <div className="overflow-hidden" style={{ background: "#0f0f14" }}>
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+            <path d="M0,30 C480,60 960,0 1440,30 L1440,0 L0,0 Z" fill={data.gradientCss.includes("emerald") ? "#f0fdf4" : data.sectionBg} />
+          </svg>
+        </div>
+      </Layout>
+    </PageTransition>
   );
 }

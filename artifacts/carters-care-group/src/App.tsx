@@ -1,4 +1,5 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
+import { AnimatePresence } from "framer-motion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -24,6 +25,22 @@ const SkinContext = createContext<SkinContextType>({
 
 export const useSkin = () => useContext(SkinContext);
 
+function AnimatedRoutes({ skin }: { skin: Skin }) {
+  const [location] = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Switch key={location}>
+        <Route path="/" component={skin ? Home : LoadingPage} />
+        <Route path="/about" component={skin ? About : LoadingPage} />
+        <Route path="/services" component={skin ? Services : LoadingPage} />
+        <Route path="/contact" component={skin ? Contact : LoadingPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </AnimatePresence>
+  );
+}
+
 function Router() {
   const [skin, setSkin] = useState<Skin>(() => {
     if (typeof window !== "undefined") {
@@ -40,18 +57,10 @@ function Router() {
     }
   }, [skin]);
 
-  const [location] = useLocation();
-
   return (
     <SkinContext.Provider value={{ skin, setSkin }}>
       <div data-skin={skin || ""}>
-        <Switch>
-          <Route path="/" component={skin ? Home : LoadingPage} />
-          <Route path="/about" component={skin ? About : LoadingPage} />
-          <Route path="/services" component={skin ? Services : LoadingPage} />
-          <Route path="/contact" component={skin ? Contact : LoadingPage} />
-          <Route component={NotFound} />
-        </Switch>
+        <AnimatedRoutes skin={skin} />
       </div>
     </SkinContext.Provider>
   );

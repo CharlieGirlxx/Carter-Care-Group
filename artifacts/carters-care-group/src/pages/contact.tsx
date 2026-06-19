@@ -4,39 +4,49 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
+import PageTransition from "@/components/PageTransition";
 
 const skinData = {
   ndis: {
-    title: "Contact Our NDIS Team",
+    title: "Contact Our\nNDIS Team",
     subtitle: "Reach out to discuss your NDIS plan, support needs, or to book a free consultation.",
-    accent: "#0d8a5d",
-    accentBg: "#e8f7f2",
+    accent: "#0b7a52",
+    accentBg: "#f0fdf4",
     gradient: "from-emerald-500 to-teal-500",
+    gradientCss: "linear-gradient(135deg, #0d8a5d, #14b87a)",
     image: "/assets/contact-welcome.png",
+    inputFocus: "#0d8a5d",
   },
   "aged-care": {
-    title: "Contact Our Aged Care Team",
+    title: "Contact Our\nAged Care Team",
     subtitle: "Get in touch to discuss aged care options, home care packages, or residential care enquiries.",
-    accent: "#c41e5a",
-    accentBg: "#fdeef3",
+    accent: "#9b1239",
+    accentBg: "#fff1f2",
     gradient: "from-rose-500 to-pink-500",
+    gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
     image: "/assets/contact-welcome.png",
+    inputFocus: "#be123c",
   },
   "service-provider": {
-    title: "Contact Our Partnership Team",
+    title: "Contact Our\nPartnership Team",
     subtitle: "Connect with us to explore referrals, partnerships, or collaborative care opportunities.",
-    accent: "#2563b5",
-    accentBg: "#eef4fc",
+    accent: "#1d4ed8",
+    accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",
+    gradientCss: "linear-gradient(135deg, #2563eb, #06b6d4)",
     image: "/assets/contact-welcome.png",
+    inputFocus: "#2563eb",
   },
 };
+
+const inputClass = "w-full px-4 py-3.5 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:outline-none focus:bg-white transition-all duration-200 text-sm font-medium text-gray-900 placeholder:text-gray-400";
 
 export default function Contact() {
   const { skin } = useSkin();
   const data = skinData[skin as keyof typeof skinData];
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   if (!data) return null;
 
@@ -45,200 +55,293 @@ export default function Contact() {
     setSubmitted(true);
   };
 
+  const getInputStyle = (field: string) => ({
+    borderColor: focusedField === field ? data.inputFocus : undefined,
+    boxShadow: focusedField === field ? `0 0 0 3px ${data.inputFocus}20` : undefined,
+  });
+
+  const contactItems = [
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "0410 186 009",
+      href: "tel:0410186009",
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "enquiries@carterscaregroup.com.au",
+      href: "mailto:enquiries@carterscaregroup.com.au",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Servicing across Australia",
+      href: null,
+    },
+    {
+      icon: Clock,
+      label: "Hours",
+      value: "Mon–Fri: 8:00 AM – 6:00 PM\nSat–Sun: 9:00 AM – 4:00 PM",
+      href: null,
+    },
+  ];
+
   return (
-    <Layout>
-      {/* Hero with image */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={data.image} alt="Contact" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
-        </div>
-        <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 blur-3xl" />
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+    <PageTransition>
+      <Layout>
+        {/* ── Hero ── */}
+        <section className="relative overflow-hidden min-h-[60vh] flex items-center">
+          <div className="absolute inset-0">
+            <img src={data.image} alt="Contact" className="w-full h-full object-cover scale-105" />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
+          </div>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/20 mb-6">
-              <Sparkles size={14} className="text-white/80" />
-              <span className="text-xs font-semibold text-white/90 uppercase tracking-wider">Get In Touch</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">{data.title}</h1>
-            <p className="text-lg text-white/85 leading-relaxed">{data.subtitle}</p>
-          </motion.div>
-        </div>
-      </section>
+            animate={{ y: [0, -18, 0] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-12 right-12 w-48 h-48 rounded-full blur-3xl opacity-25"
+            style={{ background: data.gradientCss }}
+          />
 
-      {/* Contact Section */}
-      <section className="py-24 relative overflow-hidden" style={{ background: data.accentBg }}>
-        <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-gradient-to-br from-purple-200/40 to-pink-200/40 blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-64 h-64 rounded-full bg-gradient-to-br from-amber-200/40 to-orange-200/40 blur-3xl" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-28 w-full">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-2xl"
             >
-              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-8">Contact Details</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br ${data.gradient} shadow-md`}>
-                      <Phone size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900">Phone</p>
-                      <a href="tel:0410186009" className="text-gray-500 hover:text-gray-900 transition-colors">0410 186 009</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br ${data.gradient} shadow-md`}>
-                      <Mail size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900">Email</p>
-                      <a href="mailto:enquiries@carterscaregroup.com.au" className="text-gray-500 hover:text-gray-900 transition-colors">enquiries@carterscaregroup.com.au</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br ${data.gradient} shadow-md`}>
-                      <MapPin size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900">Location</p>
-                      <p className="text-gray-500">Servicing across Australia</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-gradient-to-br ${data.gradient} shadow-md`}>
-                      <Clock size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900">Hours</p>
-                      <p className="text-gray-500">Monday – Friday: 8:00 AM – 6:00 PM</p>
-                      <p className="text-gray-500">Saturday – Sunday: 9:00 AM – 4:00 PM</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md border border-white/20 mb-8"
+                style={{ background: "rgba(255,255,255,0.12)" }}>
+                <Sparkles size={13} className="text-white/80" />
+                <span className="text-xs font-bold text-white/90 uppercase tracking-widest">Get In Touch</span>
               </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-                {submitted ? (
-                  <div className="text-center py-12">
-                    <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-gradient-to-br ${data.gradient} shadow-lg`}>
-                      <Send size={32} className="text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Message Sent!</h3>
-                    <p className="text-gray-500 mb-6">Thank you for reaching out. Our team will contact you shortly.</p>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="text-sm font-semibold transition-colors hover:opacity-80"
-                      style={{ color: data.accent }}
-                    >
-                      Send another message
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <div className="w-12 h-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 mb-6" />
-                    <h3 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h3>
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Full Name</label>
-                        <input
-                          type="text"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-0 transition-all"
-                          value={form.name}
-                          onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
-                        <input
-                          type="email"
-                          required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-0 transition-all"
-                          value={form.email}
-                          onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Phone</label>
-                        <input
-                          type="tel"
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-0 transition-all"
-                          value={form.phone}
-                          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2">Message</label>
-                        <textarea
-                          required
-                          rows={4}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-0 resize-none transition-all"
-                          value={form.message}
-                          onChange={(e) => setForm({ ...form, message: e.target.value })}
-                        />
-                      </div>
-                      <button
-                        type="submit"
-                        className={`w-full py-4 rounded-xl font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r ${data.gradient} shadow-lg hover:shadow-xl`}
-                      >
-                        Send Message
-                      </button>
-                    </form>
-                  </>
-                )}
-              </div>
+              <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.05] tracking-tight whitespace-pre-line">
+                {data.title}
+              </h1>
+              <p className="text-lg text-white/80 leading-relaxed max-w-lg">{data.subtitle}</p>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Banner */}
-      <section className="py-16 relative overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-r ${data.gradient}`} />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')] opacity-30" />
-        
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Prefer to call?</h2>
-            <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-              Our friendly team is available to answer your questions and guide you through our services.
-            </p>
-            <a
-              href="tel:0410186009"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold bg-white transition-all hover:scale-105 hover:shadow-xl"
-              style={{ color: data.accent }}
-            >
-              <Phone size={18} />
-              0410 186 009
-            </a>
-          </motion.div>
+        {/* Wave into content */}
+        <div className="overflow-hidden" style={{ background: data.accentBg }}>
+          <svg viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+            <path d="M0,36 C480,72 960,0 1440,36 L1440,0 L0,0 Z" fill="black" fillOpacity="0" />
+          </svg>
         </div>
-      </section>
-    </Layout>
+
+        {/* ── Contact Content ── */}
+        <section className="py-20 relative overflow-hidden" style={{ background: data.accentBg }}>
+          <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-30"
+            style={{ background: `radial-gradient(circle, ${data.accent}25 0%, transparent 70%)`, transform: "translate(30%, -30%)" }} />
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+              {/* Contact Info */}
+              <motion.div
+                initial={{ opacity: 0, x: -36, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="bg-white rounded-3xl p-8 border border-white h-full"
+                  style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.07)" }}>
+                  <div className="w-16 h-1.5 rounded-full mb-7" style={{ background: data.gradientCss }} />
+                  <h3 className="text-2xl font-bold text-gray-900 mb-8">Contact Details</h3>
+                  <div className="space-y-6">
+                    {contactItems.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <div key={item.label} className="flex items-start gap-4 group">
+                          <div
+                            className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300"
+                            style={{ background: data.gradientCss }}
+                          >
+                            <Icon size={19} className="text-white" />
+                          </div>
+                          <div>
+                            <p className="font-bold text-gray-900 text-sm mb-0.5">{item.label}</p>
+                            {item.href ? (
+                              <a href={item.href} className="text-gray-500 hover:text-gray-900 transition-colors text-sm leading-relaxed whitespace-pre-line">
+                                {item.value}
+                              </a>
+                            ) : (
+                              <p className="text-gray-500 text-sm leading-relaxed whitespace-pre-line">{item.value}</p>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Quick call button */}
+                  <div className="mt-10 pt-8 border-t border-gray-100">
+                    <p className="text-sm text-gray-500 mb-4 font-medium">Prefer to talk? Call us directly:</p>
+                    <a
+                      href="tel:0410186009"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                      style={{ background: data.gradientCss }}
+                    >
+                      <Phone size={16} />
+                      0410 186 009
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Contact Form */}
+              <motion.div
+                initial={{ opacity: 0, x: 36, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div className="bg-white rounded-3xl p-8 border border-white"
+                  style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.07)" }}>
+                  {submitted ? (
+                    <div className="text-center py-12">
+                      <motion.div
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                        className="w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl"
+                        style={{ background: data.gradientCss }}
+                      >
+                        <Send size={36} className="text-white" />
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                      >
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3">Message Sent!</h3>
+                        <p className="text-gray-500 mb-8 leading-relaxed">Thank you for reaching out. Our team will contact you within one business day.</p>
+                        <button
+                          onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", message: "" }); }}
+                          className="text-sm font-bold transition-colors hover:opacity-70"
+                          style={{ color: data.accent }}
+                        >
+                          Send another message →
+                        </button>
+                      </motion.div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="w-16 h-1.5 rounded-full mb-7" style={{ background: data.gradientCss }} />
+                      <h3 className="text-2xl font-bold text-gray-900 mb-7">Send a Message</h3>
+                      <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                          <label className="block text-xs font-bold text-gray-600 mb-2 uppercase tracking-wider">Full Name *</label>
+                          <input
+                            type="text"
+                            required
+                            placeholder="Jane Smith"
+                            className={inputClass}
+                            style={getInputStyle("name")}
+                            value={form.name}
+                            onChange={(e) => setForm({ ...form, name: e.target.value })}
+                            onFocus={() => setFocusedField("name")}
+                            onBlur={() => setFocusedField(null)}
+                          />
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-xs font-bold text-gray-600 mb-2 uppercase tracking-wider">Email *</label>
+                            <input
+                              type="email"
+                              required
+                              placeholder="jane@example.com"
+                              className={inputClass}
+                              style={getInputStyle("email")}
+                              value={form.email}
+                              onChange={(e) => setForm({ ...form, email: e.target.value })}
+                              onFocus={() => setFocusedField("email")}
+                              onBlur={() => setFocusedField(null)}
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-bold text-gray-600 mb-2 uppercase tracking-wider">Phone</label>
+                            <input
+                              type="tel"
+                              placeholder="04xx xxx xxx"
+                              className={inputClass}
+                              style={getInputStyle("phone")}
+                              value={form.phone}
+                              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                              onFocus={() => setFocusedField("phone")}
+                              onBlur={() => setFocusedField(null)}
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-gray-600 mb-2 uppercase tracking-wider">Message *</label>
+                          <textarea
+                            required
+                            rows={5}
+                            placeholder="Tell us how we can help you..."
+                            className={inputClass + " resize-none"}
+                            style={getInputStyle("message")}
+                            value={form.message}
+                            onChange={(e) => setForm({ ...form, message: e.target.value })}
+                            onFocus={() => setFocusedField("message")}
+                            onBlur={() => setFocusedField(null)}
+                          />
+                        </div>
+                        <button
+                          type="submit"
+                          className="w-full py-4 rounded-2xl font-bold text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl flex items-center justify-center gap-2"
+                          style={{ background: data.gradientCss, boxShadow: `0 6px 24px ${data.accent}35` }}
+                        >
+                          Send Message
+                          <ArrowRight size={17} />
+                        </button>
+                        <p className="text-xs text-gray-400 text-center">We typically respond within 1 business day.</p>
+                      </form>
+                    </>
+                  )}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Wave into CTA */}
+        <div className="overflow-hidden" style={{ background: data.accent }}>
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" preserveAspectRatio="none">
+            <path d="M0,30 C480,60 960,0 1440,30 L1440,0 L0,0 Z" fill={data.accentBg} />
+          </svg>
+        </div>
+
+        {/* ── CTA strip ── */}
+        <section className="py-14 relative overflow-hidden" style={{ background: data.gradientCss }}>
+          <motion.div
+            animate={{ x: [0, 40, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 opacity-10"
+            style={{ background: "radial-gradient(ellipse at 60% 50%, white 0%, transparent 60%)" }}
+          />
+          <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">Prefer to call?</h2>
+              <p className="text-white/70 text-base mb-8">Our friendly team is available 7 days a week.</p>
+              <a
+                href="tel:0410186009"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold bg-white transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                style={{ color: data.accent }}
+              >
+                <Phone size={17} />
+                0410 186 009
+              </a>
+            </motion.div>
+          </div>
+        </section>
+      </Layout>
+    </PageTransition>
   );
 }
