@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "LwwpvndCbXPaY7Amc2Miz"
+uri = "file://artifacts/carters-care-group/public/assets/hero-ndis.png"
+type = "image"
+title = "NDIS hero image"
+
+[[generated]]
+id = "nH1rLsVWxGXsQfUOPVumW"
+uri = "file://artifacts/carters-care-group/public/assets/hero-aged-care.png"
+type = "image"
+title = "Aged care hero image"
+
+[[generated]]
+id = "M-vy5uND6sKXYqt6J9sbv"
+uri = "file://artifacts/carters-care-group/public/assets/hero-partner.png"
+type = "image"
+title = "Partner hero image"
+
+[[generated]]
+id = "Y61O-OshCzTZKhqUZ9JCc"
+uri = "file://artifacts/carters-care-group/public/assets/about-community.png"
+type = "image"
+title = "About community illustration"
+
+[[generated]]
+id = "X6-DlSFja_e6dvSjOyx_Y"
+uri = "file://artifacts/carters-care-group/public/assets/contact-welcome.png"
+type = "image"
+title = "Contact welcome image"
+
+[[generated]]
+id = "AgK_afJP_H4IXeTfw8SYQ"
+uri = "file://artifacts/carters-care-group/public/assets/gradient-bg.png"
+type = "image"
+title = "Gradient background"
