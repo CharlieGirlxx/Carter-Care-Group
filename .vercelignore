@@ -1,0 +1,10 @@
+.git
+.gitignore
+*.md
+.replit
+.replitignore
+.agents
+.env.local
+.env.*.local
+node_modules
+pnpm-lock.yaml
