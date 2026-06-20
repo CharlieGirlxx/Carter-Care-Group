@@ -86,9 +86,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <img
-                src="/assets/carters-logo-new.jpeg"
+                src="/assets/carters-logo.png"
                 alt="Carters Care"
-                className="w-auto transition-transform duration-300 group-hover:scale-105 rounded-md"
+                className="w-auto transition-transform duration-300 group-hover:scale-105"
                 style={{ height: "4.5rem" }}
               />
             </Link>
@@ -241,12 +241,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             {/* Brand */}
             <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-5">
-                <img src="/assets/carters-icon.webp" alt="Carters Care Icon" className="h-10 w-10 rounded-full" />
-                <img src="/assets/carters-logo-new.jpeg" alt="Carters Care" className="h-10 w-auto rounded-md opacity-90" />
-              </div>
+              <img src="/assets/carters-logo.png" alt="Carters Care" className="h-12 w-auto invert mb-5 opacity-90" />
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                Your family in disability and aged care services. We treat every person with the love and respect they deserve.
+                Your family in disability and aged care services. We treat every client with the love and respect they deserve.
               </p>
               <div className="flex items-center gap-3 mt-6">
                 {[

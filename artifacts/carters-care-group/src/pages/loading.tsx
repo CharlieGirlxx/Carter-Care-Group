@@ -98,9 +98,9 @@ export default function LoadingPage() {
           className="mb-10 text-center relative z-10"
         >
           <img
-            src="/assets/carters-logo-new.jpeg"
+            src="/assets/carters-logo.png"
             alt="Carters Care Group"
-            className="h-20 w-auto mx-auto mb-5 drop-shadow-xl rounded-lg"
+            className="h-20 w-auto mx-auto mb-5 drop-shadow-xl"
           />
           <motion.div
             initial={{ scaleX: 0 }}
