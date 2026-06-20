@@ -9,7 +9,7 @@ const skinConfig: Record<Exclude<Skin, null>, {
   gradient: string; gradientLight: string;
 }> = {
   ndis: {
-    label: "NDIS Clients",
+    label: "NDIS",
     color: "#0b7a52",
     bg: "#f0fdf4",
     accent: "#0d8a5d",
@@ -17,7 +17,7 @@ const skinConfig: Record<Exclude<Skin, null>, {
     gradientLight: "linear-gradient(135deg, #d1fae5, #a7f3d0)",
   },
   "aged-care": {
-    label: "Aged Care Clients",
+    label: "Aged Care",
     color: "#9b1239",
     bg: "#fff1f2",
     accent: "#be123c",
@@ -88,7 +88,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <img
                 src="/assets/carters-logo.png"
                 alt="Carters Care"
-                className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="w-auto transition-transform duration-300 group-hover:scale-105"
+                style={{ height: "4.5rem" }}
               />
             </Link>
 

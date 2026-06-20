@@ -20,11 +20,11 @@ const skinData = {
     accentBg: "#f0fdf4",
     gradient: "from-emerald-500 to-teal-500",
     gradientCss: "linear-gradient(135deg, #0d8a5d, #14b87a)",
-    images: ["/assets/hero-ndis-1.png", "/assets/hero-ndis-2.png", "/assets/hero-ndis-3.png"],
+    images: ["/assets/hero-ndis.png", "/assets/about-community.png", "/assets/community-participation.jpg"],
   },
   "aged-care": {
     title: "About Our\nAged Care",
-    intro: "Carters Care Group provides exceptional aged care services that honour the dignity, choices, and individuality of every senior we support. We treat our clients like family.",
+    intro: "Carters Care Group provides exceptional aged care services that honour the dignity, choices, and individuality of every senior we support. We treat every person like family.",
     story: "Our aged care services were born from a deep respect for our older generations and a commitment to ensuring they receive personalised, compassionate care. We understand that every senior has a unique story, and we tailor our services to honour that.",
     values: [
       { icon: Heart, title: "Dignity", desc: "We respect your choices, privacy, and independence at every stage of care." },
@@ -36,7 +36,7 @@ const skinData = {
     accentBg: "#fff1f2",
     gradient: "from-rose-500 to-pink-500",
     gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
-    images: ["/assets/hero-aged-1.png", "/assets/hero-aged-2.png", "/assets/hero-aged-3.png"],
+    images: ["/assets/hero-aged-care.png", "/assets/about-community.png", "/assets/respite-care.jpg"],
   },
   "service-provider": {
     title: "About the Carters\nCare Platform",
@@ -52,7 +52,7 @@ const skinData = {
     accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",
     gradientCss: "linear-gradient(135deg, #2563eb, #06b6d4)",
-    images: ["/assets/hero-platform-1.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
+    images: ["/assets/hero-partner.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
   },
 };
 

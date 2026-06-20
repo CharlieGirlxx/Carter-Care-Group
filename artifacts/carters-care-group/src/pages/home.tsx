@@ -36,7 +36,7 @@ const skinData = {
       { title: "Respite Care", desc: "Short-term relief for carers and a refreshing change of scene for loved ones.", icon: HandHeart },
       { title: "Residential Care", desc: "Intimate residential homes with personalised care and a warm community atmosphere.", icon: Star },
     ],
-    quote: "We treat our aged care clients like family, because everyone deserves to feel valued, respected, and at home.",
+    quote: "We treat every person in our care like family, because everyone deserves to feel valued, respected, and at home.",
     checks: ["Government Approved Provider", "Culturally Sensitive Care", "Qualified & Compassionate Staff", "Regular Family Updates"],
     accent: "#9b1239",
     accentBg: "#fff1f2",
@@ -47,12 +47,12 @@ const skinData = {
   },
   "service-provider": {
     heroTitle: "The Carters Care\nPlatform",
-    heroText: "A purpose-built digital platform for NDIS and aged care providers — manage clients, care plans, rosters, and compliance reporting all in one place.",
+    heroText: "A purpose-built digital platform for NDIS and aged care providers — manage participants, care plans, rosters, and compliance reporting all in one place.",
     heroImages: ["/assets/hero-platform-1.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
     cta: "Explore the Platform",
     services: [
       { title: "Client Management", desc: "Centralise all client records, NDIS plans, support goals, and progress notes in one secure, easy-to-use hub.", icon: Heart },
-      { title: "Roster & Scheduling", desc: "Build and manage staff rosters, match workers to clients, and handle shift changes with real-time notifications.", icon: HandHeart },
+      { title: "Roster & Scheduling", desc: "Build and manage staff rosters, match workers to participants, and handle shift changes with real-time notifications.", icon: HandHeart },
       { title: "Compliance & Reporting", desc: "Auto-generate NDIS and aged care compliance reports, incident logs, and audit-ready documentation.", icon: Star },
     ],
     quote: "The Carters Care Platform was built by care providers, for care providers — everything you need to run your organisation, nothing you don't.",

@@ -8,19 +8,8 @@ export default function LoadingPage() {
 
   const options = [
     {
-      id: "ndis" as const,
-      title: "NDIS Clients",
-      subtitle: "Participants & Families",
-      description: "Personalised disability support tailored to your NDIS plan and goals.",
-      icon: Heart,
-      color: "#0b7a52",
-      gradient: "from-emerald-500 to-teal-400",
-      glow: "rgba(13,138,93,0.2)",
-      border: "#0d8a5d",
-    },
-    {
       id: "aged-care" as const,
-      title: "Aged Care Clients",
+      title: "Aged Care",
       subtitle: "Seniors & Families",
       description: "Compassionate aged care that respects your dignity, choices, and independence.",
       icon: HandHeart,
@@ -30,10 +19,21 @@ export default function LoadingPage() {
       border: "#be123c",
     },
     {
+      id: "ndis" as const,
+      title: "NDIS",
+      subtitle: "Participants & Families",
+      description: "Personalised disability support tailored to your NDIS plan and goals.",
+      icon: Heart,
+      color: "#0b7a52",
+      gradient: "from-emerald-500 to-teal-400",
+      glow: "rgba(13,138,93,0.2)",
+      border: "#0d8a5d",
+    },
+    {
       id: "service-provider" as const,
       title: "Carters Care Platform",
       subtitle: "For Service Providers",
-      description: "Access our purpose-built platform for managing clients, care plans, scheduling, and compliance reporting in one place.",
+      description: "Access our purpose-built platform for managing participants, care plans, scheduling, and compliance reporting in one place.",
       icon: Building2,
       color: "#1d4ed8",
       gradient: "from-blue-500 to-cyan-400",
