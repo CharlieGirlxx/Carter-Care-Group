@@ -71,8 +71,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@carters.care",
-      href: "mailto:hello@carters.care",
+      value: skin === "service-provider" ? "sales@carters.care" : "hello@carters.care",
+      href: skin === "service-provider" ? "mailto:sales@carters.care" : "mailto:hello@carters.care",
     },
     {
       icon: MapPin,
@@ -83,7 +83,9 @@ export default function Contact() {
     {
       icon: Clock,
       label: "Hours",
-      value: "Office Hours: Mon\u2013Fri 9am \u2013 5pm\nAfter Hours Participant Contact: 24hrs",
+      value: skin === "service-provider"
+        ? "Office Hours: Mon\u2013Fri 9am \u2013 5pm\nSales Support: 24hrs"
+        : "Office Hours: Mon\u2013Fri 9am \u2013 5pm\nAfter Hours Participant Contact: 24hrs",
       href: null,
     },
   ];
