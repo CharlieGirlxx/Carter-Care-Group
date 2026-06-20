@@ -271,7 +271,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
                 <div className="flex items-start gap-3 hover:text-white transition-colors">
                   <Mail size={14} className="text-gray-500 shrink-0 mt-0.5" />
-                  <a href="mailto:sayhello@carters.care">sayhello@carters.care</a>
+                  <a href="mailto:hello@carters.care">hello@carters.care</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin size={14} className="text-gray-500 shrink-0" />

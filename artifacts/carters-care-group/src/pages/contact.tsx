@@ -71,8 +71,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "sayhello@carters.care",
-      href: "mailto:sayhello@carters.care",
+      value: "hello@carters.care",
+      href: "mailto:hello@carters.care",
     },
     {
       icon: MapPin,
