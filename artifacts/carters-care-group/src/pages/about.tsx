@@ -20,7 +20,7 @@ const skinData = {
     accentBg: "#f0fdf4",
     gradient: "from-emerald-500 to-teal-500",
     gradientCss: "linear-gradient(135deg, #0d8a5d, #14b87a)",
-    images: ["/assets/hero-ndis.png", "/assets/about-community.png", "/assets/community-participation.jpg"],
+    images: ["/assets/ndis-about-1.png", "/assets/ndis-about-2.png", "/assets/ndis-about-3.png"],
   },
   "aged-care": {
     title: "About Our\nAged Care",

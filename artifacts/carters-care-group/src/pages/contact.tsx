@@ -15,7 +15,7 @@ const skinData = {
     accentBg: "#f0fdf4",
     gradient: "from-emerald-500 to-teal-500",
     gradientCss: "linear-gradient(135deg, #0d8a5d, #14b87a)",
-    images: ["/assets/contact-ndis.png", "/assets/hero-ndis-1.png", "/assets/hero-ndis-2.png"],
+    images: ["/assets/ndis-contact-1.png", "/assets/hero-ndis-1.png", "/assets/hero-ndis-2.png"],
     inputFocus: "#0d8a5d",
   },
   "aged-care": {

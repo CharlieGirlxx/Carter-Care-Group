@@ -96,3 +96,63 @@ id = "FV4LCdyyD6vZqLuuUV9Mn"
 uri = "file://artifacts/carters-care-group/public/assets/contact-ndis.png"
 type = "image"
 title = "Contact NDIS office"
+
+[[generated]]
+id = "fNE442Ps4cOQxFKNFqEHq"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-home-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "rcFvcbU3S8voejomuMQfB"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-home-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "KB5VXvUHuWrVs-lKBPQhH"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-home-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "2OiV6g24RKQu5UjOmNAI8"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-about-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "EhvtmXDusntgtCd-CBIbj"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-about-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "ozegC69cSwWM2tYjFqqm-"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-about-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "BIM7k8EEd0LBOEOZQ_Tw5"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-services-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "wn92xEaVcLnkZtQeZ-kuD"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-services-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "twu0Br70uar9hO1GWAIoy"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-services-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "44aAC-B-Jz5Wi933NWSLL"
+uri = "file://artifacts/carters-care-group/public/assets/ndis-contact-1.png"
+type = "image"
+title = "generated_image"

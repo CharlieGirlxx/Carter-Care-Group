@@ -10,7 +10,7 @@ const skinData = {
   ndis: {
     heroTitle: "Your NDIS Journey,\nSupported Every Step",
     heroText: "Personalised disability support services that put you in control — from daily living to community participation.",
-    heroImages: ["/assets/hero-ndis-1.png", "/assets/hero-ndis-2.png", "/assets/hero-ndis-3.png"],
+    heroImages: ["/assets/ndis-home-1.png", "/assets/ndis-home-2.png", "/assets/ndis-home-3.png"],
     cta: "Explore NDIS Services",
     services: [
       { title: "Daily Living Support", desc: "Assistance with personal care, meals, and household tasks to help you live independently.", icon: Heart },

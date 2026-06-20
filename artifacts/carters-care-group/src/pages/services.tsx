@@ -11,7 +11,7 @@ const skinData = {
   ndis: {
     title: "NDIS Support\nServices",
     subtitle: "Comprehensive support services tailored to your NDIS plan and personal goals.",
-    images: ["/assets/assist-personal.jpg", "/assets/daily-tasks.jpg", "/assets/life-stage-transition.jpg"],
+    images: ["/assets/ndis-services-1.png", "/assets/ndis-services-2.png", "/assets/ndis-services-3.png"],
     services: [
       { icon: HandHeart, title: "Assist Personal Activities", desc: "Support with daily personal tasks including bathing, dressing, grooming, and mobility. We respect your privacy and dignity at all times.", detail: "Our support workers are trained to assist with personal care tasks while maintaining your comfort and dignity. We follow your preferences and routines, ensuring you feel respected and supported. Whether you need help with morning routines, evening care, or mobility assistance, we tailor our approach to your unique needs." },
       { icon: Home, title: "Assist Life Stage Transition", desc: "Moving into a new phase of life? We support transitions into independent living, new accommodation, or post-hospital care.", detail: "Life transitions can be challenging, but you don't have to face them alone. Our team helps you plan and execute smooth transitions, whether you're moving into your first independent home, relocating to new accommodation, or recovering after a hospital stay. We coordinate with families, healthcare providers, and other services to ensure continuity of care." },
