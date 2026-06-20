@@ -71,8 +71,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "enquiries@carterscaregroup.com.au",
-      href: "mailto:enquiries@carterscaregroup.com.au",
+      value: "sayhello@carters.care",
+      href: "mailto:sayhello@carters.care",
     },
     {
       icon: MapPin,
