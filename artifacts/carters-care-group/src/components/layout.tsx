@@ -88,7 +88,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <img
                 src="/assets/carters-logo.png"
                 alt="Carters Care"
-                className="h-11 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
 
@@ -131,12 +131,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               )}
 
               <a
-                href="tel:0410186009"
+                href="tel:1300002723"
                 className="ml-2 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
                 style={{ background: config?.gradient || "linear-gradient(135deg, #9b188f, #c41e5a)" }}
               >
                 <Phone size={14} />
-                0410 186 009
+                1300 00 27 23
               </a>
             </nav>
 
@@ -200,12 +200,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </button>
                   )}
                   <a
-                    href="tel:0410186009"
+                    href="tel:1300002723"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-bold text-white"
                     style={{ background: config?.gradient || "linear-gradient(135deg, #9b188f, #c41e5a)" }}
                   >
                     <Phone size={14} />
-                    0410 186 009
+                    1300 00 27 23
                   </a>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             {/* Brand */}
             <div className="md:col-span-2">
-              <img src="/assets/carters-logo.png" alt="Carters Care" className="h-10 w-auto invert mb-5 opacity-90" />
+              <img src="/assets/carters-logo.png" alt="Carters Care" className="h-12 w-auto invert mb-5 opacity-90" />
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                 Your family in disability and aged care services. We treat every client with the love and respect they deserve.
               </p>
@@ -266,7 +266,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <div className="space-y-3 text-sm text-gray-400">
                 <div className="flex items-center gap-3 hover:text-white transition-colors">
                   <Phone size={14} className="text-gray-500 shrink-0" />
-                  <a href="tel:0410186009">0410 186 009</a>
+                  <a href="tel:1300002723">1300 00 27 23</a>
                 </div>
                 <div className="flex items-start gap-3 hover:text-white transition-colors">
                   <Mail size={14} className="text-gray-500 shrink-0 mt-0.5" />
@@ -274,7 +274,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin size={14} className="text-gray-500 shrink-0" />
-                  <span>Servicing across Australia</span>
+                  <span>PO Box 1118, Osborne Park, WA 6916</span>
                 </div>
               </div>
             </div>

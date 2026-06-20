@@ -5,6 +5,7 @@ import { Phone, Mail, MapPin, Clock, Send, ArrowRight, Sparkles } from "lucide-r
 import { useState } from "react";
 import { Link } from "wouter";
 import PageTransition from "@/components/PageTransition";
+import ImageCarousel from "@/components/ImageCarousel";
 
 const skinData = {
   ndis: {
@@ -14,7 +15,7 @@ const skinData = {
     accentBg: "#f0fdf4",
     gradient: "from-emerald-500 to-teal-500",
     gradientCss: "linear-gradient(135deg, #0d8a5d, #14b87a)",
-    image: "/assets/contact-welcome.png",
+    images: ["/assets/contact-ndis.png", "/assets/hero-ndis-1.png", "/assets/hero-ndis-2.png"],
     inputFocus: "#0d8a5d",
   },
   "aged-care": {
@@ -24,7 +25,7 @@ const skinData = {
     accentBg: "#fff1f2",
     gradient: "from-rose-500 to-pink-500",
     gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
-    image: "/assets/contact-welcome.png",
+    images: ["/assets/hero-aged-1.png", "/assets/hero-aged-2.png", "/assets/hero-aged-3.png"],
     inputFocus: "#be123c",
   },
   "service-provider": {
@@ -34,7 +35,7 @@ const skinData = {
     accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",
     gradientCss: "linear-gradient(135deg, #2563eb, #06b6d4)",
-    image: "/assets/contact-welcome.png",
+    images: ["/assets/hero-platform-1.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
     inputFocus: "#2563eb",
   },
 };
@@ -64,8 +65,8 @@ export default function Contact() {
     {
       icon: Phone,
       label: "Phone",
-      value: "0410 186 009",
-      href: "tel:0410186009",
+      value: "1300 00 27 23",
+      href: "tel:1300002723",
     },
     {
       icon: Mail,
@@ -76,13 +77,13 @@ export default function Contact() {
     {
       icon: MapPin,
       label: "Location",
-      value: "Servicing across Australia",
+      value: "PO Box 1118, Osborne Park, WA 6916",
       href: null,
     },
     {
       icon: Clock,
       label: "Hours",
-      value: "Mon–Fri: 8:00 AM – 6:00 PM\nSat–Sun: 9:00 AM – 4:00 PM",
+      value: "Office Hours: Mon\u2013Fri 9am \u2013 5pm\nAfter Hours Participant Contact: 24hrs",
       href: null,
     },
   ];
@@ -92,10 +93,14 @@ export default function Contact() {
       <Layout>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden min-h-[60vh] flex items-center">
-          <div className="absolute inset-0">
-            <img src={data.image} alt="Contact" className="w-full h-full object-cover scale-105" />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
-          </div>
+          <ImageCarousel
+            images={data.images}
+            interval={7000}
+            className="absolute inset-0"
+            overlay={(
+              <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
+            )}
+          />
           <motion.div
             animate={{ y: [0, -18, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
@@ -179,12 +184,12 @@ export default function Contact() {
                   <div className="mt-10 pt-8 border-t border-gray-100">
                     <p className="text-sm text-gray-500 mb-4 font-medium">Prefer to talk? Call us directly:</p>
                     <a
-                      href="tel:0410186009"
+                      href="tel:1300002723"
                       className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
                       style={{ background: data.gradientCss }}
                     >
                       <Phone size={16} />
-                      0410 186 009
+                      1300 00 27 23
                     </a>
                   </div>
                 </div>
@@ -331,12 +336,12 @@ export default function Contact() {
               <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-3 tracking-tight">Prefer to call?</h2>
               <p className="text-white/70 text-base mb-8">Our friendly team is available 7 days a week.</p>
               <a
-                href="tel:0410186009"
+                href="tel:1300002723"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold bg-white transition-all duration-300 hover:scale-105 hover:shadow-xl"
                 style={{ color: data.accent }}
               >
                 <Phone size={17} />
-                0410 186 009
+                1300 00 27 23
               </a>
             </motion.div>
           </div>

@@ -4,12 +4,13 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, HandHeart, Star, Shield, Sparkles, Phone, CheckCircle2 } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import ImageCarousel from "@/components/ImageCarousel";
 
 const skinData = {
   ndis: {
     heroTitle: "Your NDIS Journey,\nSupported Every Step",
     heroText: "Personalised disability support services that put you in control — from daily living to community participation.",
-    heroImage: "/assets/hero-ndis.png",
+    heroImages: ["/assets/hero-ndis-1.png", "/assets/hero-ndis-2.png", "/assets/hero-ndis-3.png"],
     cta: "Explore NDIS Services",
     services: [
       { title: "Daily Living Support", desc: "Assistance with personal care, meals, and household tasks to help you live independently.", icon: Heart },
@@ -28,7 +29,7 @@ const skinData = {
   "aged-care": {
     heroTitle: "Compassionate Aged Care,\nWhere You Belong",
     heroText: "Exceptional aged care services that honour your dignity, choices, and independence — at home or in our intimate residential settings.",
-    heroImage: "/assets/hero-aged-care.png",
+    heroImages: ["/assets/hero-aged-1.png", "/assets/hero-aged-2.png", "/assets/hero-aged-3.png"],
     cta: "Explore Aged Care Services",
     services: [
       { title: "In-Home Care", desc: "Personal care, domestic assistance, and companionship in the comfort of your own home.", icon: Heart },
@@ -47,7 +48,7 @@ const skinData = {
   "service-provider": {
     heroTitle: "The Carters Care\nPlatform",
     heroText: "A purpose-built digital platform for NDIS and aged care providers — manage clients, care plans, rosters, and compliance reporting all in one place.",
-    heroImage: "/assets/hero-partner.png",
+    heroImages: ["/assets/hero-platform-1.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
     cta: "Explore the Platform",
     services: [
       { title: "Client Management", desc: "Centralise all client records, NDIS plans, support goals, and progress notes in one secure, easy-to-use hub.", icon: Heart },
@@ -82,10 +83,14 @@ export default function Home() {
       <Layout>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-          <div className="absolute inset-0">
-            <img src={data.heroImage} alt="Hero" className="w-full h-full object-cover scale-105" style={{ transformOrigin: "center center" }} />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)" }} />
-          </div>
+          <ImageCarousel
+            images={data.heroImages}
+            interval={7000}
+            className="absolute inset-0"
+            overlay={(
+              <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)" }} />
+            )}
+          />
 
           {/* Floating orbs */}
           <motion.div animate={{ y: [0, -20, 0], x: [0, 15, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -318,12 +323,12 @@ export default function Home() {
                   <ArrowRight size={17} />
                 </Link>
                 <a
-                  href="tel:0410186009"
+                  href="tel:1300002723"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white transition-all duration-300 hover:bg-white/15"
                   style={{ border: "2px solid rgba(255,255,255,0.35)" }}
                 >
                   <Phone size={17} />
-                  0410 186 009
+                  1300 00 27 23
                 </a>
               </div>
             </motion.div>

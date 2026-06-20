@@ -36,3 +36,63 @@ id = "AgK_afJP_H4IXeTfw8SYQ"
 uri = "file://artifacts/carters-care-group/public/assets/gradient-bg.png"
 type = "image"
 title = "Gradient background"
+
+[[generated]]
+id = "W2CvAoqPTFW3sxYFzzjeR"
+uri = "file://artifacts/carters-care-group/public/assets/hero-ndis-1.png"
+type = "image"
+title = "NDIS hero outdoor care"
+
+[[generated]]
+id = "vNaIriqO8g9tLPJpwStIH"
+uri = "file://artifacts/carters-care-group/public/assets/hero-ndis-2.png"
+type = "image"
+title = "NDIS hero kitchen support"
+
+[[generated]]
+id = "rqBa8d_Q-6lBItKITZJGb"
+uri = "file://artifacts/carters-care-group/public/assets/hero-ndis-3.png"
+type = "image"
+title = "NDIS hero basketball"
+
+[[generated]]
+id = "ixCQRXa7aasBn2si7AGZr"
+uri = "file://artifacts/carters-care-group/public/assets/hero-aged-1.png"
+type = "image"
+title = "Aged care hero nurse"
+
+[[generated]]
+id = "1gRNsAGd0TRPHsHTm1Mt5"
+uri = "file://artifacts/carters-care-group/public/assets/hero-aged-2.png"
+type = "image"
+title = "Aged care hero garden"
+
+[[generated]]
+id = "WwHHimopKHSXgQx4t4kuY"
+uri = "file://artifacts/carters-care-group/public/assets/hero-aged-3.png"
+type = "image"
+title = "Aged care hero couple home"
+
+[[generated]]
+id = "FuaWV1Ti8XXXvmDl12Soh"
+uri = "file://artifacts/carters-care-group/public/assets/hero-platform-1.png"
+type = "image"
+title = "Platform hero dashboard"
+
+[[generated]]
+id = "0rnG6YbUgJ3V4MyxruR8B"
+uri = "file://artifacts/carters-care-group/public/assets/hero-platform-2.png"
+type = "image"
+title = "Platform hero coordinator"
+
+[[generated]]
+id = "hPx0Ap6kd_pA57xaj3n1b"
+uri = "file://artifacts/carters-care-group/public/assets/hero-platform-3.png"
+type = "image"
+title = "Platform hero team collaboration"
+
+[[generated]]
+id = "FV4LCdyyD6vZqLuuUV9Mn"
+uri = "file://artifacts/carters-care-group/public/assets/contact-ndis.png"
+type = "image"
+title = "Contact NDIS office"

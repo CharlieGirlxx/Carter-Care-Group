@@ -3,6 +3,7 @@ import Layout from "@/components/layout";
 import { motion } from "framer-motion";
 import { Heart, Shield, Users, Award, Sparkles } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import ImageCarousel from "@/components/ImageCarousel";
 
 const skinData = {
   ndis: {
@@ -19,7 +20,7 @@ const skinData = {
     accentBg: "#f0fdf4",
     gradient: "from-emerald-500 to-teal-500",
     gradientCss: "linear-gradient(135deg, #0d8a5d, #14b87a)",
-    image: "/assets/about-community.png",
+    images: ["/assets/hero-ndis-1.png", "/assets/hero-ndis-2.png", "/assets/hero-ndis-3.png"],
   },
   "aged-care": {
     title: "About Our\nAged Care",
@@ -35,7 +36,7 @@ const skinData = {
     accentBg: "#fff1f2",
     gradient: "from-rose-500 to-pink-500",
     gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
-    image: "/assets/about-community.png",
+    images: ["/assets/hero-aged-1.png", "/assets/hero-aged-2.png", "/assets/hero-aged-3.png"],
   },
   "service-provider": {
     title: "About the Carters\nCare Platform",
@@ -51,7 +52,7 @@ const skinData = {
     accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",
     gradientCss: "linear-gradient(135deg, #2563eb, #06b6d4)",
-    image: "/assets/about-community.png",
+    images: ["/assets/hero-platform-1.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
   },
 };
 
@@ -72,10 +73,14 @@ export default function About() {
       <Layout>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden min-h-[70vh] flex items-center">
-          <div className="absolute inset-0">
-            <img src={data.image} alt="About" className="w-full h-full object-cover scale-105" />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
-          </div>
+          <ImageCarousel
+            images={data.images}
+            interval={7000}
+            className="absolute inset-0"
+            overlay={(
+              <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
+            )}
+          />
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
@@ -137,10 +142,8 @@ export default function About() {
         {/* ── Stats ── */}
         <section className="py-16 relative" style={{ background: data.accentBg }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-8 text-center max-w-3xl mx-auto">
               {[
-                { value: "500+", label: "Clients Supported" },
-                { value: "50+", label: "Care Workers" },
                 { value: "10+", label: "Years Experience" },
                 { value: "100%", label: "Commitment" },
               ].map((stat, i) => (
