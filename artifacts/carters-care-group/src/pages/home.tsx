@@ -165,8 +165,6 @@ export default function Home() {
               {[
                 { icon: Shield, label: "NDIS Registered" },
                 { icon: Heart, label: "Aged Care Approved" },
-                { icon: Sparkles, label: "5-Star Rated" },
-                { icon: Star, label: "Family Owned" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-2.5 text-gray-500">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: data.sectionBg }}>
