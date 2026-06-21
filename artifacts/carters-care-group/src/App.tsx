@@ -44,9 +44,9 @@ function AnimatedRoutes({ skin }: { skin: Skin }) {
 function Router() {
   const [skin, setSkin] = useState<Skin>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("carters-skin") as Skin) || null;
+      return (localStorage.getItem("carters-skin") as Skin) || "ndis";
     }
-    return null;
+    return "ndis";
   });
 
   useEffect(() => {

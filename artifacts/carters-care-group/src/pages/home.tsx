@@ -86,9 +86,9 @@ export default function Home() {
           <ImageCarousel
             images={data.heroImages}
             interval={7000}
-            className="absolute inset-0"
+            className="absolute inset-0 w-full h-full"
             overlay={(
-              <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)" }} />
+              <div className="absolute inset-0 w-full h-full" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)" }} />
             )}
           />
 
