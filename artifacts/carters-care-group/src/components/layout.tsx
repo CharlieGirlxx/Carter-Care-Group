@@ -1,6 +1,6 @@
 import { useSkin, type Skin } from "@/App";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin, ChevronRight, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -243,7 +243,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="md:col-span-2">
               <img src="/assets/carters-logo.png" alt="Carters Care" className="h-12 w-auto invert mb-5 opacity-90" />
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                Your family in disability and aged care services. We treat every client with the love and respect they deserve.
+                Your family in disability and aged care services. We treat every person we support with the love and respect they deserve.
               </p>
               <div className="flex items-center gap-3 mt-6">
                 {[
@@ -273,9 +273,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <Mail size={14} className="text-gray-500 shrink-0 mt-0.5" />
                   <a href="mailto:hello@carters.care">hello@carters.care</a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <MapPin size={14} className="text-gray-500 shrink-0" />
+                <div className="flex items-start gap-3">
+                  <MapPin size={14} className="text-gray-500 shrink-0 mt-0.5" />
                   <span>PO Box 1118, Osborne Park, WA 6916</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Clock size={14} className="text-gray-500 shrink-0 mt-0.5" />
+                  <span>Office Hours: Mon–Fri 9am – 5pm<br />After Hours Contact: 24hrs</span>
                 </div>
               </div>
             </div>
@@ -308,7 +312,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               &copy; {new Date().getFullYear()} Carters Care Group. All rights reserved.
             </p>
             <p className="text-xs text-gray-700">
-              ABN: Your ABN here &nbsp;·&nbsp; NDIS Provider Registration
+              NDIS Registered Provider &nbsp;·&nbsp; Aged Care Approved Provider
             </p>
           </div>
         </div>

@@ -5,7 +5,6 @@ import { Heart, HandHeart, Star, Home, Users, Calendar, Car, Brain, CookingPot, 
 import { Link } from "wouter";
 import { useState } from "react";
 import PageTransition from "@/components/PageTransition";
-import ImageCarousel from "@/components/ImageCarousel";
 
 const skinData = {
   ndis: {
@@ -28,7 +27,7 @@ const skinData = {
   "aged-care": {
     title: "Aged Care\nServices",
     subtitle: "Exceptional care for seniors that respects dignity, independence, and personal choice.",
-    images: ["/assets/hero-aged-2.png", "/assets/respite-care.jpg", "/assets/community-participation.jpg"],
+    images: ["/assets/aged-services.png"],
     services: [
       { icon: HandHeart, title: "Personal Care", desc: "Gentle, respectful assistance with bathing, dressing, grooming, medication reminders, and mobility support.", detail: "Our personal care services are delivered with the utmost respect for your dignity and preferences. We take time to understand your routines and comfort levels, ensuring that assistance with bathing, dressing, grooming, and mobility is provided in a way that makes you feel at ease." },
       { icon: Home, title: "Domestic Assistance", desc: "Help with household tasks, meal preparation, laundry, and maintaining a safe, comfortable home environment.", detail: "A clean, safe, and comfortable home supports your health and wellbeing. Our domestic assistance services include cleaning, laundry, ironing, meal preparation, and minor home maintenance. We also conduct regular safety checks to identify and address potential hazards in your home." },
@@ -43,16 +42,16 @@ const skinData = {
     gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
   },
   "service-provider": {
-    title: "Carters Care\nPlatform Features",
+    title: "Platform\nFeatures",
     subtitle: "Everything a modern NDIS or aged care organisation needs — in one powerful, easy-to-use platform.",
-    images: ["/assets/hero-platform-2.png", "/assets/hero-platform-3.png", "/assets/hero-partner.png"],
+    images: ["/assets/platform-services.png"],
     services: [
-      { icon: Users, title: "Client Management", desc: "Centralise all participant and client records, NDIS plans, support goals, case notes, and documents in a single secure hub.", detail: "Stop managing client information across spreadsheets, folders, and multiple systems. Our Client Management module brings everything together — participant profiles, NDIS plans, support goals, progress notes, and important documents. Search, filter, and update records in seconds, with full audit trails and role-based access controls." },
+      { icon: Users, title: "Participant Management", desc: "Centralise all participant records, NDIS plans, support goals, case notes, and documents in a single secure hub.", detail: "Stop managing participant information across spreadsheets, folders, and multiple systems. Our Participant Management module brings everything together — participant profiles, NDIS plans, support goals, progress notes, and important documents. Search, filter, and update records in seconds, with full audit trails and role-based access controls." },
       { icon: Calendar, title: "Roster & Scheduling", desc: "Build dynamic rosters, match the right workers to the right participants, manage availability, and push real-time shift notifications.", detail: "Rostering is one of the most time-consuming tasks in care. Our intelligent scheduling engine considers worker qualifications, participant preferences, travel times, and availability to suggest optimal rosters. Workers receive shift notifications via the mobile app, and last-minute changes are handled smoothly with automatic reallocation and participant notification." },
       { icon: HandHeart, title: "Care Plan Builder", desc: "Create, review, and update personalised care plans that align with NDIS funding categories and aged care package requirements.", detail: "Our Care Plan Builder makes it easy to create comprehensive, personalised care plans that align with NDIS funding categories and aged care package requirements. Set goals, define support needs, link outcomes, and track progress over time. Plans are automatically shared with relevant team members and updated in real time." },
       { icon: Brain, title: "Compliance & Audit Tools", desc: "Auto-generate NDIS Practice Standards reports, incident logs, medication records, and audit-ready documentation at the click of a button.", detail: "Compliance is non-negotiable. Our platform automatically generates NDIS Practice Standards reports, incident logs, medication administration records, and comprehensive audit-ready documentation. Stay ahead of regulatory changes with built-in alerts and templates that reflect current Australian care standards." },
       { icon: Home, title: "Billing & Claims", desc: "Streamline NDIS claim submission and aged care billing with automated invoicing, payment tracking, and reconciliation tools.", detail: "Reduce billing errors and speed up cash flow with our integrated billing module. NDIS claims are automatically generated from approved shifts and services, validated against plan budgets, and submitted directly to the NDIS portal. Aged care billing follows Home Care Package pricing and reporting requirements." },
-      { icon: Heart, title: "Worker App", desc: "A companion mobile app for support workers — view shifts, access client notes, record progress, and submit timesheets on the go.", detail: "Our companion mobile app puts everything support workers need in their pocket. View upcoming shifts, access client care plans and notes, record progress and observations, submit digital timesheets, and communicate with coordinators. Available on iOS and Android with offline capability for remote areas." },
+      { icon: Heart, title: "Worker App", desc: "A companion mobile app for support workers — view shifts, access participant notes, record progress, and submit timesheets on the go.", detail: "Our companion mobile app puts everything support workers need in their pocket. View upcoming shifts, access participant care plans and notes, record progress and observations, submit digital timesheets, and communicate with coordinators. Available on iOS and Android with offline capability for remote areas." },
     ],
     accent: "#1d4ed8",
     accentBg: "#eff6ff",
@@ -72,14 +71,8 @@ export default function Services() {
       <Layout>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden min-h-[65vh] flex items-center">
-          <ImageCarousel
-            images={data.images}
-            interval={7000}
-            className="absolute inset-0"
-            overlay={(
-              <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
-            )}
-          />
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${data.images[0]})` }} />
+          <div className="absolute inset-0 w-full h-full" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
           <motion.div
             animate={{ y: [0, -18, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}

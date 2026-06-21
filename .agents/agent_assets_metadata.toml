@@ -156,3 +156,51 @@ id = "44aAC-B-Jz5Wi933NWSLL"
 uri = "file://artifacts/carters-care-group/public/assets/ndis-contact-1.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "evunaAH-Tn4sLRAqD2f9q"
+uri = "file://artifacts/carters-care-group/public/assets/aged-home.png"
+type = "image"
+title = "aged care home hero"
+
+[[generated]]
+id = "iePjzzpqiyYKAssJ9s70O"
+uri = "file://artifacts/carters-care-group/public/assets/aged-about.png"
+type = "image"
+title = "aged care about hero"
+
+[[generated]]
+id = "NuYKbgLAroEaY47a7pEj2"
+uri = "file://artifacts/carters-care-group/public/assets/aged-services.png"
+type = "image"
+title = "aged care services hero"
+
+[[generated]]
+id = "8mD0dfilv_gCZWjCzbKFf"
+uri = "file://artifacts/carters-care-group/public/assets/aged-contact.png"
+type = "image"
+title = "aged care contact hero"
+
+[[generated]]
+id = "YorR_MCidKkgY6p1amxso"
+uri = "file://artifacts/carters-care-group/public/assets/platform-home.png"
+type = "image"
+title = "platform home hero"
+
+[[generated]]
+id = "fDQz5f8E43ZklU2IMDr5B"
+uri = "file://artifacts/carters-care-group/public/assets/platform-about.png"
+type = "image"
+title = "platform about hero"
+
+[[generated]]
+id = "os_TRzM18uZOihR1r2br2"
+uri = "file://artifacts/carters-care-group/public/assets/platform-services.png"
+type = "image"
+title = "platform services hero"
+
+[[generated]]
+id = "cv4ViIvcGxq3Gb4_q3PzM"
+uri = "file://artifacts/carters-care-group/public/assets/platform-contact.png"
+type = "image"
+title = "platform contact hero"

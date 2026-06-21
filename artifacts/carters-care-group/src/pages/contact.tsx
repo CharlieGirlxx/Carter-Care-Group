@@ -5,7 +5,6 @@ import { Phone, Mail, MapPin, Clock, Send, ArrowRight, Sparkles } from "lucide-r
 import { useState } from "react";
 import { Link } from "wouter";
 import PageTransition from "@/components/PageTransition";
-import ImageCarousel from "@/components/ImageCarousel";
 
 const skinData = {
   ndis: {
@@ -25,17 +24,17 @@ const skinData = {
     accentBg: "#fff1f2",
     gradient: "from-rose-500 to-pink-500",
     gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
-    images: ["/assets/hero-aged-1.png", "/assets/hero-aged-2.png", "/assets/hero-aged-3.png"],
+    images: ["/assets/aged-contact.png"],
     inputFocus: "#be123c",
   },
   "service-provider": {
     title: "Get Started with\nthe Platform",
-    subtitle: "Request a demo, ask about pricing, or get help onboarding your organisation onto the Carters Care Platform.",
+    subtitle: "Request a demo, ask about pricing, or get help onboarding your organisation onto the Platform.",
     accent: "#1d4ed8",
     accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",
     gradientCss: "linear-gradient(135deg, #2563eb, #06b6d4)",
-    images: ["/assets/hero-platform-1.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
+    images: ["/assets/platform-contact.png"],
     inputFocus: "#2563eb",
   },
 };
@@ -95,14 +94,8 @@ export default function Contact() {
       <Layout>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden min-h-[60vh] flex items-center">
-          <ImageCarousel
-            images={data.images}
-            interval={7000}
-            className="absolute inset-0"
-            overlay={(
-              <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
-            )}
-          />
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${data.images[0]})` }} />
+          <div className="absolute inset-0 w-full h-full" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
           <motion.div
             animate={{ y: [0, -18, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}

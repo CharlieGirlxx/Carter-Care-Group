@@ -31,7 +31,7 @@ export default function LoadingPage() {
     },
     {
       id: "service-provider" as const,
-      title: "Carters Care Platform",
+      title: "Platform",
       subtitle: "For Service Providers",
       description: "Access our purpose-built platform for managing participants, care plans, scheduling, and compliance reporting in one place.",
       icon: Building2,

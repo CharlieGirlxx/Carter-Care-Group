@@ -3,7 +3,6 @@ import Layout from "@/components/layout";
 import { motion } from "framer-motion";
 import { Heart, Shield, Users, Award, Sparkles } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
-import ImageCarousel from "@/components/ImageCarousel";
 
 const skinData = {
   ndis: {
@@ -36,12 +35,12 @@ const skinData = {
     accentBg: "#fff1f2",
     gradient: "from-rose-500 to-pink-500",
     gradientCss: "linear-gradient(135deg, #be123c, #e11d6a)",
-    images: ["/assets/hero-aged-care.png", "/assets/about-community.png", "/assets/respite-care.jpg"],
+    images: ["/assets/aged-about.png"],
   },
   "service-provider": {
-    title: "About the Carters\nCare Platform",
-    intro: "The Carters Care Platform is a purpose-built software solution designed specifically for NDIS and aged care service providers — simplifying operations so you can focus on delivering great care.",
-    story: "We built the Carters Care Platform after seeing first-hand how much time care organisations lose to paperwork, manual rostering, and fragmented systems. Our platform brings everything together — client records, care plans, staff schedules, billing, and compliance — into one streamlined, cloud-based solution built to meet Australian regulatory standards.",
+    title: "About the\nPlatform",
+    intro: "The Platform is a purpose-built software solution designed specifically for NDIS and aged care service providers — simplifying operations so you can focus on delivering great care.",
+    story: "We built the Platform after seeing first-hand how much time care organisations lose to paperwork, manual rostering, and fragmented systems. Our platform brings everything together — participant records, care plans, staff schedules, billing, and compliance — into one streamlined, cloud-based solution built to meet Australian regulatory standards.",
     values: [
       { icon: Heart, title: "Built for Care", desc: "Designed specifically for the NDIS and aged care sector — not a generic tool retrofitted to fit." },
       { icon: Shield, title: "Secure & Compliant", desc: "Australian-hosted, encrypted, and built to meet NDIS Practice Standards and aged care regulations." },
@@ -52,7 +51,7 @@ const skinData = {
     accentBg: "#eff6ff",
     gradient: "from-blue-500 to-cyan-500",
     gradientCss: "linear-gradient(135deg, #2563eb, #06b6d4)",
-    images: ["/assets/hero-partner.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
+    images: ["/assets/platform-about.png"],
   },
 };
 
@@ -73,14 +72,8 @@ export default function About() {
       <Layout>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden min-h-[70vh] flex items-center">
-          <ImageCarousel
-            images={data.images}
-            interval={7000}
-            className="absolute inset-0"
-            overlay={(
-              <div className="absolute inset-0" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
-            )}
-          />
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${data.images[0]})` }} />
+          <div className="absolute inset-0 w-full h-full" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.15) 100%)" }} />
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}

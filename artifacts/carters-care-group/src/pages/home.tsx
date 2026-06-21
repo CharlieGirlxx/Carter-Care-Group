@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, HandHeart, Star, Shield, Sparkles, Phone, CheckCircle2 } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
-import ImageCarousel from "@/components/ImageCarousel";
 
 const skinData = {
   ndis: {
@@ -29,7 +28,7 @@ const skinData = {
   "aged-care": {
     heroTitle: "Compassionate Aged Care,\nWhere You Belong",
     heroText: "Exceptional aged care services that honour your dignity, choices, and independence — at home or in our intimate residential settings.",
-    heroImages: ["/assets/hero-aged-1.png", "/assets/hero-aged-2.png", "/assets/hero-aged-3.png"],
+    heroImages: ["/assets/aged-home.png"],
     cta: "Explore Aged Care Services",
     services: [
       { title: "In-Home Care", desc: "Personal care, domestic assistance, and companionship in the comfort of your own home.", icon: Heart },
@@ -46,16 +45,16 @@ const skinData = {
     statColor: "#be123c",
   },
   "service-provider": {
-    heroTitle: "The Carters Care\nPlatform",
+    heroTitle: "The\nPlatform",
     heroText: "A purpose-built digital platform for NDIS and aged care providers — manage participants, care plans, rosters, and compliance reporting all in one place.",
-    heroImages: ["/assets/hero-platform-1.png", "/assets/hero-platform-2.png", "/assets/hero-platform-3.png"],
+    heroImages: ["/assets/platform-home.png"],
     cta: "Explore the Platform",
     services: [
-      { title: "Client Management", desc: "Centralise all client records, NDIS plans, support goals, and progress notes in one secure, easy-to-use hub.", icon: Heart },
+      { title: "Participant Management", desc: "Centralise all participant records, NDIS plans, support goals, and progress notes in one secure, easy-to-use hub.", icon: Heart },
       { title: "Roster & Scheduling", desc: "Build and manage staff rosters, match workers to participants, and handle shift changes with real-time notifications.", icon: HandHeart },
       { title: "Compliance & Reporting", desc: "Auto-generate NDIS and aged care compliance reports, incident logs, and audit-ready documentation.", icon: Star },
     ],
-    quote: "The Carters Care Platform was built by care providers, for care providers — everything you need to run your organisation, nothing you don't.",
+    quote: "The Platform was built by care providers, for care providers — everything you need to run your organisation, nothing you don't.",
     checks: ["NDIS Practice Standards Ready", "Cloud-Based & Secure", "Real-Time Rostering", "Automated Compliance Reports"],
     accent: "#1d4ed8",
     accentBg: "#eff6ff",
@@ -83,14 +82,8 @@ export default function Home() {
       <Layout>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-          <ImageCarousel
-            images={data.heroImages}
-            interval={7000}
-            className="absolute inset-0 w-full h-full"
-            overlay={(
-              <div className="absolute inset-0 w-full h-full" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)" }} />
-            )}
-          />
+          <div className="absolute inset-0 w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${data.heroImages[0]})` }} />
+          <div className="absolute inset-0 w-full h-full" style={{ background: "linear-gradient(120deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.2) 100%)" }} />
 
           {/* Floating orbs */}
           <motion.div animate={{ y: [0, -20, 0], x: [0, 15, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
